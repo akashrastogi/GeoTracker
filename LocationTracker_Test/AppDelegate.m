@@ -14,6 +14,7 @@
 
 @implementation AppDelegate
 @synthesize locationManager;
+CLLocation *lastLocation;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -48,6 +49,8 @@
         }
         [self startMonitoringSignificantLocationChanges];
     }
+    
+    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
     return YES;
 }
 
@@ -78,8 +81,7 @@
 - (CLLocationManager *) locationManager {
     if (!locationManager) {
         locationManager = [[CLLocationManager alloc] init];
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;//kCLLocationAccuracyBestForNavigation;
-        locationManager.activityType = CLActivityTypeOtherNavigation;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.delegate = self;
     }
     return locationManager;
@@ -98,19 +100,28 @@
 
 #pragma mark - CLLocationManagerDelegate methods
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    NSLog(@"didUpdateLocations- %@", [locations componentsJoinedByString:@"\n"]);
+    //lastRegion
+    CLLocation *loc = [locations lastObject];
+    CLLocationDistance distance = 0.0;
+    if (lastLocation) {
+        distance = [loc distanceFromLocation:lastLocation];
+    }
+    NSString *location = [NSString stringWithFormat:@"distance- %f && locations- %@", distance, [locations componentsJoinedByString:@"\n"]];
+    NSLog(@"didUpdateLocations- %@", location);
     if ([[UIApplication sharedApplication]applicationState] == UIApplicationStateActive) {
-        [[[UIAlertView alloc]initWithTitle:@"didUpdateLocations" message:[locations componentsJoinedByString:@"\n"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
+        [[[UIAlertView alloc]initWithTitle:@"didUpdateLocations" message:location delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
     }
     else {
-        [self showLocalNotification:[locations componentsJoinedByString:@"\n"]];
+        [self showLocalNotification:location];
     }
+    lastLocation = loc;
 }
 
 #pragma mark - Show local notification
 -(void) showLocalNotification :(NSString *)appstate{
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     [notification setApplicationIconBadgeNumber:[UIApplication sharedApplication].applicationIconBadgeNumber+1];
+    notification.soundName = UILocalNotificationDefaultSoundName;
     notification.alertBody = appstate;
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
