@@ -14,6 +14,7 @@
 		387F29EB1B4D15F100DE71B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 387F29EA1B4D15F100DE71B8 /* Images.xcassets */; };
 		387F29EE1B4D15F100DE71B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 387F29EC1B4D15F100DE71B8 /* LaunchScreen.xib */; };
 		387F29FA1B4D15F100DE71B8 /* LocationTracker_TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */; };
+		387F2A041B4D16A900DE71B8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 387F2A031B4D16A900DE71B8 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		387F29F31B4D15F100DE71B8 /* LocationTracker_TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationTracker_TestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		387F29F81B4D15F100DE71B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationTracker_TestTests.m; sourceTree = "<group>"; };
+		387F2A031B4D16A900DE71B8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				387F29DC1B4D15F100DE71B8 /* LocationTracker_Test */,
+				387F2A031B4D16A900DE71B8 /* .gitignore */,
 				387F29F61B4D15F100DE71B8 /* LocationTracker_TestTests */,
 				387F29DB1B4D15F100DE71B8 /* Products */,
 			);
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				387F2A041B4D16A900DE71B8 /* .gitignore in Resources */,
 				387F29E91B4D15F100DE71B8 /* Main.storyboard in Resources */,
 				387F29EE1B4D15F100DE71B8 /* LaunchScreen.xib in Resources */,
 				387F29EB1B4D15F100DE71B8 /* Images.xcassets in Resources */,
@@ -297,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -332,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -344,6 +348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LocationTracker_Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -354,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LocationTracker_Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
