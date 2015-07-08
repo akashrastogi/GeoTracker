@@ -15,6 +15,7 @@
 		387F29EE1B4D15F100DE71B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 387F29EC1B4D15F100DE71B8 /* LaunchScreen.xib */; };
 		387F29FA1B4D15F100DE71B8 /* LocationTracker_TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */; };
 		387F2A041B4D16A900DE71B8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 387F2A031B4D16A900DE71B8 /* .gitignore */; };
+		387F2A071B4D225600DE71B8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387F2A061B4D225600DE71B8 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		387F29F81B4D15F100DE71B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationTracker_TestTests.m; sourceTree = "<group>"; };
 		387F2A031B4D16A900DE71B8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		387F2A061B4D225600DE71B8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				387F2A071B4D225600DE71B8 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +71,7 @@
 				387F29DC1B4D15F100DE71B8 /* LocationTracker_Test */,
 				387F2A031B4D16A900DE71B8 /* .gitignore */,
 				387F29F61B4D15F100DE71B8 /* LocationTracker_TestTests */,
+				387F2A051B4D223500DE71B8 /* Frameworks */,
 				387F29DB1B4D15F100DE71B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -122,6 +126,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		387F2A051B4D223500DE71B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				387F2A061B4D225600DE71B8 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,6 +183,11 @@
 				TargetAttributes = {
 					387F29D91B4D15F100DE71B8 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					387F29F21B4D15F100DE71B8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -418,6 +435,7 @@
 				387F29FF1B4D15F100DE71B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		387F2A001B4D15F100DE71B8 /* Build configuration list for PBXNativeTarget "LocationTracker_TestTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +444,7 @@
 				387F2A021B4D15F100DE71B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

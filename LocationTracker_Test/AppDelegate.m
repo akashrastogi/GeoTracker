@@ -9,17 +9,49 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic) CLLocationManager * locationManager;
 @end
 
 @implementation AppDelegate
-
+@synthesize locationManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    
+    if ([[UIApplication sharedApplication]respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
+    if ([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@""
+                                                       message:@"The app doesn't work without the Background App Refresh enabled. To turn it on, go to Settings > General > Background App Refresh"
+                                                      delegate:nil
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else if ([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusRestricted){
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@""
+                                                       message:@"The functions of this app are limited because the Background App Refresh is disable."
+                                                      delegate:nil
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else {
+        if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+            NSLog(@"UIApplicationLaunchOptionsLocationKey");
+            [self showLocalNotification:@"app is launched by core location event"];
+        }
+        [self startMonitoringSignificantLocationChanges];
+    }
     return YES;
 }
 
+#pragma mark - app state methods
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -42,4 +74,44 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Location tracking
+- (CLLocationManager *) locationManager {
+    if (!locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;//kCLLocationAccuracyBestForNavigation;
+        locationManager.activityType = CLActivityTypeOtherNavigation;
+        locationManager.delegate = self;
+    }
+    return locationManager;
+}
+-(void)startMonitoringSignificantLocationChanges {
+    NSLog(@"startMonitoringSignificantLocationChanges");
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    [self.locationManager startMonitoringSignificantLocationChanges];
+}
+-(void)stopMonitoringSignificantLocationChanges {
+    NSLog(@"stopMonitoringSignificantLocationChanges");
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
+#pragma mark - CLLocationManagerDelegate methods
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    NSLog(@"didUpdateLocations- %@", [locations componentsJoinedByString:@"\n"]);
+    if ([[UIApplication sharedApplication]applicationState] == UIApplicationStateActive) {
+        [[[UIAlertView alloc]initWithTitle:@"didUpdateLocations" message:[locations componentsJoinedByString:@"\n"] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
+    }
+    else {
+        [self showLocalNotification:[locations componentsJoinedByString:@"\n"]];
+    }
+}
+
+#pragma mark - Show local notification
+-(void) showLocalNotification :(NSString *)appstate{
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    [notification setApplicationIconBadgeNumber:[UIApplication sharedApplication].applicationIconBadgeNumber+1];
+    notification.alertBody = appstate;
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
 @end
