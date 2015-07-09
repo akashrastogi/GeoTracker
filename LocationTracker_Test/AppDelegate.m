@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <RestKit/RestKit.h>
+#import "WebServiceManager.h"
 
 @interface AppDelegate ()
 @property (nonatomic) CLLocationManager * locationManager;
@@ -14,9 +16,10 @@
 
 @implementation AppDelegate
 @synthesize locationManager;
-CLLocation *lastLocation;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Configure RestKit
+    [self setupRestKit];
     
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -100,29 +103,64 @@ CLLocation *lastLocation;
 
 #pragma mark - CLLocationManagerDelegate methods
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    //lastRegion
-    CLLocation *loc = [locations lastObject];
-    CLLocationDistance distance = 0.0;
-    if (lastLocation) {
-        distance = [loc distanceFromLocation:lastLocation];
+    NSMutableArray *arr = [NSMutableArray new];
+    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+    NSString *deviceOS = [NSString stringWithFormat:@"%@ %@", [[UIDevice currentDevice]systemName], [[UIDevice currentDevice] systemVersion]];
+    for (CLLocation *loc in locations) {
+        NSDictionary *dict = @{@"latitude": [NSNumber numberWithFloat:loc.coordinate.latitude],
+                               @"longitude": [NSNumber numberWithLong:loc.coordinate.longitude],
+                               @"speed": [NSNumber numberWithDouble:[loc speed]],
+                               @"course": [NSNumber numberWithDouble:[loc course]],
+                               @"horizontal_accuracy": [NSNumber numberWithDouble:loc.horizontalAccuracy],
+                               @"vertical_accuracy": [NSNumber numberWithDouble:loc.verticalAccuracy],
+                               @"battery_level": [NSNumber numberWithFloat:batteryLevel],
+                               @"device": deviceOS};
+        [arr addObject:dict];
     }
-    NSString *location = [NSString stringWithFormat:@"distance- %f && locations- %@", distance, [locations componentsJoinedByString:@"\n"]];
-    NSLog(@"didUpdateLocations- %@", location);
-    if ([[UIApplication sharedApplication]applicationState] == UIApplicationStateActive) {
-        [[[UIAlertView alloc]initWithTitle:@"didUpdateLocations" message:location delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
+    
+    // if locations availale, send them to server
+    if ([arr count]>0) {
+        NSDictionary *param = @{@"locations": arr};
+        WebServiceManager *wsManager = [[WebServiceManager alloc]init];
+        [wsManager postLocation:param withCompletionHandler:^(id response, NSError *err) {
+            if (err) {
+                NSString *errMsg = [NSString stringWithFormat:@"Could not post locations to server. \n Error- %@", err.localizedDescription];
+                NSLog(@"%@", errMsg);
+                [self updateUIforWebserviceresult:errMsg];
+            }
+            else {
+                NSLog(@"Location data posted to server successfully. \n Locations- %@", arr);
+                NSString *msg = [NSString stringWithFormat:@"Locations- %@", arr];
+                [self updateUIforWebserviceresult:msg];
+            }
+        }];
     }
-    else {
-        [self showLocalNotification:location];
-    }
-    lastLocation = loc;
 }
 
 #pragma mark - Show local notification
+-(void) updateUIforWebserviceresult :(NSString *)msg{
+    if ([[UIApplication sharedApplication]applicationState] == UIApplicationStateActive) {
+        [[[UIAlertView alloc]initWithTitle:@"didUpdateLocations" message:msg delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
+    }
+    else {
+        [self showLocalNotification:msg];
+    }
+}
+
 -(void) showLocalNotification :(NSString *)appstate{
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     [notification setApplicationIconBadgeNumber:[UIApplication sharedApplication].applicationIconBadgeNumber+1];
     notification.soundName = UILocalNotificationDefaultSoundName;
     notification.alertBody = appstate;
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
+
+#pragma mark - RestKit configuration
+- (void) setupRestKit {
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL: [NSURL URLWithString:BASE_URL]];
+    [objectManager setRequestSerializationMIMEType:RKMIMETypeJSON];
+    [objectManager setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
+    [objectManager setAcceptHeaderWithMIMEType:RKMIMETypeTextXML];
+    [RKObjectManager setSharedManager:objectManager];
 }
 @end

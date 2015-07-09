@@ -17,6 +17,8 @@
 		387F29FA1B4D15F100DE71B8 /* LocationTracker_TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */; };
 		387F2A041B4D16A900DE71B8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 387F2A031B4D16A900DE71B8 /* .gitignore */; };
 		387F2A071B4D225600DE71B8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387F2A061B4D225600DE71B8 /* CoreLocation.framework */; };
+		38B120A61B4E6EE300BA2198 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120A51B4E6EE300BA2198 /* Constant.m */; };
+		38B120AB1B4E716A00BA2198 /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120AA1B4E716A00BA2198 /* WebServiceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,11 @@
 		387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationTracker_TestTests.m; sourceTree = "<group>"; };
 		387F2A031B4D16A900DE71B8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		387F2A061B4D225600DE71B8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		38B120A41B4E6EE300BA2198 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		38B120A51B4E6EE300BA2198 /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
+		38B120A71B4E6FCF00BA2198 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		38B120A91B4E716A00BA2198 /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
+		38B120AA1B4E716A00BA2198 /* WebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceManager.m; sourceTree = "<group>"; };
 		85DE5477D281718AED78AAE8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AEFEE94C60503BA6677F0AB7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -94,6 +101,7 @@
 		387F29DC1B4D15F100DE71B8 /* LocationTracker_Test */ = {
 			isa = PBXGroup;
 			children = (
+				38B120A21B4E6EBC00BA2198 /* Models */,
 				387F29E11B4D15F100DE71B8 /* AppDelegate.h */,
 				387F29E21B4D15F100DE71B8 /* AppDelegate.m */,
 				387F29E41B4D15F100DE71B8 /* ViewController.h */,
@@ -111,6 +119,7 @@
 			children = (
 				387F29DE1B4D15F100DE71B8 /* Info.plist */,
 				387F29DF1B4D15F100DE71B8 /* main.m */,
+				38B120A71B4E6FCF00BA2198 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -139,6 +148,33 @@
 				AEFEE94C60503BA6677F0AB7 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		38B120A21B4E6EBC00BA2198 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				38B120A81B4E715500BA2198 /* Services */,
+				38B120A31B4E6EC400BA2198 /* Value Objects */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		38B120A31B4E6EC400BA2198 /* Value Objects */ = {
+			isa = PBXGroup;
+			children = (
+				38B120A41B4E6EE300BA2198 /* Constant.h */,
+				38B120A51B4E6EE300BA2198 /* Constant.m */,
+			);
+			name = "Value Objects";
+			sourceTree = "<group>";
+		};
+		38B120A81B4E715500BA2198 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				38B120A91B4E716A00BA2198 /* WebServiceManager.h */,
+				38B120AA1B4E716A00BA2198 /* WebServiceManager.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		D822FA6A8D396245AB74DEED /* Pods */ = {
@@ -291,9 +327,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B120AB1B4E716A00BA2198 /* WebServiceManager.m in Sources */,
 				387F29E61B4D15F100DE71B8 /* ViewController.m in Sources */,
 				387F29E31B4D15F100DE71B8 /* AppDelegate.m in Sources */,
 				387F29E01B4D15F100DE71B8 /* main.m in Sources */,
+				38B120A61B4E6EE300BA2198 /* Constant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +454,7 @@
 			baseConfigurationReference = 18D705F2455F5248478F98A6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = LocationTracker_Test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -428,6 +467,7 @@
 			baseConfigurationReference = 85DE5477D281718AED78AAE8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = LocationTracker_Test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
