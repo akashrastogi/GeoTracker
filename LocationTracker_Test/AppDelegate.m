@@ -8,14 +8,9 @@
 
 #import "AppDelegate.h"
 #import <RestKit/RestKit.h>
-#import "WebServiceManager.h"
-
-@interface AppDelegate ()
-@property (nonatomic) CLLocationManager * locationManager;
-@end
+#import "LocationTracker.h"
 
 @implementation AppDelegate
-@synthesize locationManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Configure RestKit
@@ -46,11 +41,13 @@
         [alert show];
     }
     else {
+        LocationTracker *locationTracker = [LocationTracker sharedInstance];
+        [locationTracker startMonitoringSignificantLocationChanges];
+        
         if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-            NSLog(@"UIApplicationLaunchOptionsLocationKey");
-            [self showLocalNotification:@"app is launched by core location event"];
+            NSLog(@"app is launched by core location event");
+            [locationTracker showLocalNotification:@"app is launched by core location event"];
         }
-        [self startMonitoringSignificantLocationChanges];
     }
     
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
@@ -78,81 +75,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark - Location tracking
-- (CLLocationManager *) locationManager {
-    if (!locationManager) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        locationManager.delegate = self;
-    }
-    return locationManager;
-}
--(void)startMonitoringSignificantLocationChanges {
-    NSLog(@"startMonitoringSignificantLocationChanges");
-    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [self.locationManager requestAlwaysAuthorization];
-    }
-    [self.locationManager startMonitoringSignificantLocationChanges];
-}
--(void)stopMonitoringSignificantLocationChanges {
-    NSLog(@"stopMonitoringSignificantLocationChanges");
-    [self.locationManager stopMonitoringSignificantLocationChanges];
-}
-
-#pragma mark - CLLocationManagerDelegate methods
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    NSMutableArray *arr = [NSMutableArray new];
-    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
-    NSString *deviceOS = [NSString stringWithFormat:@"%@ %@", [[UIDevice currentDevice]systemName], [[UIDevice currentDevice] systemVersion]];
-    for (CLLocation *loc in locations) {
-        NSDictionary *dict = @{@"latitude": [NSNumber numberWithFloat:loc.coordinate.latitude],
-                               @"longitude": [NSNumber numberWithLong:loc.coordinate.longitude],
-                               @"speed": [NSNumber numberWithDouble:[loc speed]],
-                               @"course": [NSNumber numberWithDouble:[loc course]],
-                               @"horizontal_accuracy": [NSNumber numberWithDouble:loc.horizontalAccuracy],
-                               @"vertical_accuracy": [NSNumber numberWithDouble:loc.verticalAccuracy],
-                               @"battery_level": [NSNumber numberWithFloat:batteryLevel],
-                               @"device": deviceOS};
-        [arr addObject:dict];
-    }
-    
-    // if locations availale, send them to server
-    if ([arr count]>0) {
-        NSDictionary *param = @{@"locations": arr};
-        WebServiceManager *wsManager = [[WebServiceManager alloc]init];
-        [wsManager postLocation:param withCompletionHandler:^(id response, NSError *err) {
-            if (err) {
-                NSString *errMsg = [NSString stringWithFormat:@"Could not post locations to server. \n Error- %@", err.localizedDescription];
-                NSLog(@"%@", errMsg);
-                [self updateUIforWebserviceresult:errMsg];
-            }
-            else {
-                NSLog(@"Location data posted to server successfully. \n Locations- %@", arr);
-                NSString *msg = [NSString stringWithFormat:@"Locations- %@", arr];
-                [self updateUIforWebserviceresult:msg];
-            }
-        }];
-    }
-}
-
-#pragma mark - Show local notification
--(void) updateUIforWebserviceresult :(NSString *)msg{
-    if ([[UIApplication sharedApplication]applicationState] == UIApplicationStateActive) {
-        [[[UIAlertView alloc]initWithTitle:@"didUpdateLocations" message:msg delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
-    }
-    else {
-        [self showLocalNotification:msg];
-    }
-}
-
--(void) showLocalNotification :(NSString *)appstate{
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    [notification setApplicationIconBadgeNumber:[UIApplication sharedApplication].applicationIconBadgeNumber+1];
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    notification.alertBody = appstate;
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
 
 #pragma mark - RestKit configuration
