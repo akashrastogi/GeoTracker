@@ -8,6 +8,7 @@
 
 #import "LocationTracker.h"
 #import "WebServiceManager.h"
+#import "Location.h"
 
 @interface LocationTracker ()
 @property (nonatomic) CLLocationManager * locationManager;
@@ -30,7 +31,9 @@ static LocationTracker *_locationTracker = nil;
 - (CLLocationManager *) locationManager {
     if (!locationManager) {
         locationManager = [[CLLocationManager alloc] init];
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        //locationManager.activityType = CLActivityTypeOtherNavigation;
+        locationManager.distanceFilter = 100.0;
         locationManager.delegate = self;
     }
     return locationManager;
@@ -49,38 +52,64 @@ static LocationTracker *_locationTracker = nil;
 
 #pragma mark - CLLocationManagerDelegate methods
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    NSLog(@"%@", @"locationManager didUpdateLocations called");
+    if (locations.count == 0) {
+        return;
+    }
+    
+    CLLocation *newLocation = [locations lastObject];
+    
+    // test the age of the location measurement to determine if the measurement is cached
+    // in most cases we will not want to rely on cached measurements
+    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+    if (locationAge > 5.0) return;
+    
+    // test that the horizontal accuracy does not indicate an invalid measurement
+    if (newLocation.horizontalAccuracy < 0) return;
+    
+    // test the distance covered from last received location, Distance should be more than 0 meters
+    CLLocationDistance distanceCovered = 0.0;
+    CLLocation *lastReceivedLocation = [Location lastReceivedLocation];
+    [Location setLastReceivedLocation:newLocation];
+    if (lastReceivedLocation) {
+        distanceCovered = [newLocation distanceFromLocation:lastReceivedLocation];
+        if (distanceCovered <= 0) return;
+    }
+    
     NSMutableArray *arr = [NSMutableArray new];
     float batteryLevel = [[UIDevice currentDevice] batteryLevel];
     NSString *deviceOS = [NSString stringWithFormat:@"%@ %@", [[UIDevice currentDevice]systemName], [[UIDevice currentDevice] systemVersion]];
     for (CLLocation *loc in locations) {
-        NSDictionary *dict = @{@"latitude": [NSNumber numberWithFloat:loc.coordinate.latitude],
+        NSDictionary *dict = @{
+                               @"latitude": [NSNumber numberWithFloat:loc.coordinate.latitude],
                                @"longitude": [NSNumber numberWithLong:loc.coordinate.longitude],
                                @"speed": [NSNumber numberWithDouble:[loc speed]],
                                @"course": [NSNumber numberWithDouble:[loc course]],
                                @"horizontal_accuracy": [NSNumber numberWithDouble:loc.horizontalAccuracy],
                                @"vertical_accuracy": [NSNumber numberWithDouble:loc.verticalAccuracy],
                                @"battery_level": [NSNumber numberWithFloat:batteryLevel],
-                               @"device": deviceOS};
+                               @"device": deviceOS
+                               };
         [arr addObject:dict];
     }
     
-    // if locations availale, send them to server
-    if ([arr count]>0) {
-        NSDictionary *param = @{@"locations": arr};
-        WebServiceManager *wsManager = [[WebServiceManager alloc]init];
-        [wsManager postLocation:param withCompletionHandler:^(id response, NSError *err) {
-            if (err) {
-                NSString *errMsg = [NSString stringWithFormat:@"Could not post locations to server. \n Error- %@", err.localizedDescription];
-                NSLog(@"%@", errMsg);
-                [self updateUIforWebserviceresult:errMsg];
-            }
-            else {
-                NSLog(@"Location data posted to server successfully. \n Locations- %@", arr);
-                NSString *msg = [NSString stringWithFormat:@"Locations- %@", arr];
-                [self updateUIforWebserviceresult:msg];
-            }
-        }];
-    }
+    NSDictionary *param = @{
+                            @"distance_in_meters": [NSNumber numberWithDouble:distanceCovered],
+                            @"locations": arr
+                            };
+    WebServiceManager *wsManager = [[WebServiceManager alloc]init];
+    [wsManager postLocation:param withCompletionHandler:^(id response, NSError *err) {
+        if (err) {
+            NSString *errMsg = [NSString stringWithFormat:@"Could not post locations to server. \n Error- %@", err.localizedDescription];
+            NSLog(@"%@", errMsg);
+            [self updateUIforWebserviceresult:errMsg];
+        }
+        else {
+            NSLog(@"Location data posted to server successfully. \n Locations- %@", param);
+            NSString *msg = [NSString stringWithFormat:@"Locations- %@", param];
+            [self updateUIforWebserviceresult:msg];
+        }
+    }];
 }
 - (void)locationManager: (CLLocationManager *)manager didFailWithError: (NSError *)error{
     [self updateUIforWebserviceresult:error.localizedDescription];

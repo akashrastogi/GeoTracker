@@ -20,6 +20,7 @@
 		38B120A61B4E6EE300BA2198 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120A51B4E6EE300BA2198 /* Constant.m */; };
 		38B120AB1B4E716A00BA2198 /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120AA1B4E716A00BA2198 /* WebServiceManager.m */; };
 		38B120AE1B4E99A600BA2198 /* LocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120AD1B4E99A600BA2198 /* LocationTracker.m */; };
+		38B120B41B4ED2EA00BA2198 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120B31B4ED2EA00BA2198 /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		38B120AA1B4E716A00BA2198 /* WebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceManager.m; sourceTree = "<group>"; };
 		38B120AC1B4E99A600BA2198 /* LocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTracker.h; sourceTree = "<group>"; };
 		38B120AD1B4E99A600BA2198 /* LocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTracker.m; sourceTree = "<group>"; };
+		38B120B21B4ED2EA00BA2198 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		38B120B31B4ED2EA00BA2198 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		85DE5477D281718AED78AAE8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AEFEE94C60503BA6677F0AB7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -163,6 +166,8 @@
 			children = (
 				38B120A41B4E6EE300BA2198 /* Constant.h */,
 				38B120A51B4E6EE300BA2198 /* Constant.m */,
+				38B120B21B4ED2EA00BA2198 /* Location.h */,
+				38B120B31B4ED2EA00BA2198 /* Location.m */,
 			);
 			name = "Value Objects";
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38B120AE1B4E99A600BA2198 /* LocationTracker.m in Sources */,
+				38B120B41B4ED2EA00BA2198 /* Location.m in Sources */,
 				38B120AB1B4E716A00BA2198 /* WebServiceManager.m in Sources */,
 				387F29E61B4D15F100DE71B8 /* ViewController.m in Sources */,
 				387F29E31B4D15F100DE71B8 /* AppDelegate.m in Sources */,
