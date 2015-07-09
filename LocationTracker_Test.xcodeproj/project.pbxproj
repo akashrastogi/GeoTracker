@@ -104,14 +104,11 @@
 		387F29DC1B4D15F100DE71B8 /* LocationTracker_Test */ = {
 			isa = PBXGroup;
 			children = (
+				38B120B11B4EA48D00BA2198 /* AppDelegate */,
 				38B120A21B4E6EBC00BA2198 /* Models */,
-				387F29E11B4D15F100DE71B8 /* AppDelegate.h */,
-				387F29E21B4D15F100DE71B8 /* AppDelegate.m */,
-				387F29E41B4D15F100DE71B8 /* ViewController.h */,
-				387F29E51B4D15F100DE71B8 /* ViewController.m */,
-				387F29E71B4D15F100DE71B8 /* Main.storyboard */,
-				387F29EA1B4D15F100DE71B8 /* Images.xcassets */,
-				387F29EC1B4D15F100DE71B8 /* LaunchScreen.xib */,
+				38B120B01B4EA46700BA2198 /* Views */,
+				38B120AF1B4EA42D00BA2198 /* Controllers */,
+				38B120A81B4E715500BA2198 /* Services */,
 				387F29DD1B4D15F100DE71B8 /* Supporting Files */,
 			);
 			path = LocationTracker_Test;
@@ -156,7 +153,6 @@
 		38B120A21B4E6EBC00BA2198 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				38B120A81B4E715500BA2198 /* Services */,
 				38B120A31B4E6EC400BA2198 /* Value Objects */,
 			);
 			name = Models;
@@ -180,6 +176,34 @@
 				38B120AD1B4E99A600BA2198 /* LocationTracker.m */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		38B120AF1B4EA42D00BA2198 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				387F29E41B4D15F100DE71B8 /* ViewController.h */,
+				387F29E51B4D15F100DE71B8 /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		38B120B01B4EA46700BA2198 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				387F29E71B4D15F100DE71B8 /* Main.storyboard */,
+				387F29EA1B4D15F100DE71B8 /* Images.xcassets */,
+				387F29EC1B4D15F100DE71B8 /* LaunchScreen.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		38B120B11B4EA48D00BA2198 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				387F29E11B4D15F100DE71B8 /* AppDelegate.h */,
+				387F29E21B4D15F100DE71B8 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 		D822FA6A8D396245AB74DEED /* Pods */ = {
