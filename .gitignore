@@ -1,12 +1,7 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# Created by https://www.gitignore.io
 
-## Build generated
+### Xcode ###
 build/
-DerivedData
-
-## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -16,24 +11,59 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-
-## Other
 *.xccheckout
 *.moved-aside
+DerivedData
 *.xcuserstate
-*.xcscmblueprint
 
-## Obj-C/Swift specific
+
+### Objective-C ###
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
 *.hmap
 *.ipa
+*.xcuserstate
 
 # CocoaPods
+Pods/
+LocationTracker_Test.xcworkspace
+
+
+### Swift ###
+# Xcode
 #
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
-#
-# Pods/
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+
+# CocoaPods
+Pods/
 
 # Carthage
 #
