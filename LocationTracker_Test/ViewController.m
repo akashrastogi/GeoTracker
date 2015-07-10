@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "Location.h"
+#import "LocationTracker.h"
 
 @interface ViewController ()
 
@@ -16,12 +18,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    // add action target to the controls
+    [self.switchLocationTracking addTarget:self action:@selector(locationTrackingValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.switchRegionMonitoring addTarget:self action:@selector(regionMonitoringValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self initialSetup];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)initialSetup{
+    [self.switchLocationTracking setOn:[Location locationTracking]];
+    [self locationTrackingValueChanged:self.switchLocationTracking];
+    
+    [self.switchRegionMonitoring setOn:[Location regionMonitoring]];
+    [self regionMonitoringValueChanged:self.switchRegionMonitoring];
 }
 
+- (IBAction)locationTrackingValueChanged:(UISwitch *)sender {
+    LocationTracker *tracker = [LocationTracker sharedInstance];
+    if (sender.isOn) {
+        [tracker startMonitoringSignificantLocationChanges];
+    }
+    else [tracker stopMonitoringSignificantLocationChanges];
+    
+    [Location setLocationTracking:sender.isOn];
+}
+
+- (IBAction)regionMonitoringValueChanged:(UISwitch *)sender {
+    LocationTracker *tracker = [LocationTracker sharedInstance];
+    if (sender.isOn) {
+        [tracker startRegionMonitoring];
+    }
+    else [tracker stopRegionMonitoring];
+    
+    [Location setregionMonitoring:sender.isOn];
+}
 @end

@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISwitch *switchLocationTracking;
+@property (weak, nonatomic) IBOutlet UISwitch *switchRegionMonitoring;
 
 @end
 

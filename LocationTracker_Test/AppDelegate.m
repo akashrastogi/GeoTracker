@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import <RestKit/RestKit.h>
-#import "LocationTracker.h"
 
 @implementation AppDelegate
 
@@ -41,16 +40,17 @@
         [alert show];
     }
     else {
-        LocationTracker *locationTracker = [LocationTracker sharedInstance];
-        [locationTracker startMonitoringSignificantLocationChanges];
-        
         if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-            NSLog(@"app is launched by core location event");
-            [locationTracker showLocalNotification:@"app is launched by core location event"];
+            NSString *msg = @"app is launched by core location event";
+            NSLog(@"%@", msg);
+            UILocalNotification *notification = [[UILocalNotification alloc] init];
+            [notification setApplicationIconBadgeNumber:[UIApplication sharedApplication].applicationIconBadgeNumber+1];
+            notification.soundName = UILocalNotificationDefaultSoundName;
+            notification.alertBody = msg;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
         }
+        else [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
     }
-    
-    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
     return YES;
 }
 

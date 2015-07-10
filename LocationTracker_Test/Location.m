@@ -57,4 +57,24 @@
     [ud synchronize];
 }
 
++(BOOL)locationTracking{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud boolForKey:@"is_location_tracking_on"];
+}
++(void)setLocationTracking :(BOOL)flag{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:flag forKey:@"is_location_tracking_on"];
+    [ud synchronize];
+}
+
++(BOOL)regionMonitoring{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud boolForKey:@"is_region_monitoring_on"];
+}
++(void)setregionMonitoring :(BOOL)flag{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:flag forKey:@"is_region_monitoring_on"];
+    [ud synchronize];
+}
+
 @end

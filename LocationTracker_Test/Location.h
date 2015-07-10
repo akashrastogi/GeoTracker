@@ -19,4 +19,10 @@
 
 +(NSDate *)lastDidExitTimestamp;
 +(void)setLastDidExitTimestamp :(NSDate *)timestamp;
+
++(BOOL)locationTracking;
++(void)setLocationTracking :(BOOL)flag;
+
++(BOOL)regionMonitoring;
++(void)setregionMonitoring :(BOOL)flag;
 @end
