@@ -14,4 +14,9 @@
 +(CLLocation*)lastReceivedLocation;
 +(void)setLastReceivedLocation :(CLLocation*)location;
 
++(NSDate *)lastDidEnterTimestamp;
++(void)setLastDidEnterTimestamp :(NSDate *)timestamp;
+
++(NSDate *)lastDidExitTimestamp;
++(void)setLastDidExitTimestamp :(NSDate *)timestamp;
 @end

@@ -35,4 +35,26 @@
     [ud synchronize];
 }
 
++(NSDate *)lastDidEnterTimestamp{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSDate *date = [ud objectForKey:@"last_did_enter_timestamp"];
+    return date;
+}
++(void)setLastDidEnterTimestamp :(NSDate *)timestamp{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:timestamp forKey:@"last_did_enter_timestamp"];
+    [ud synchronize];
+}
+
++(NSDate *)lastDidExitTimestamp{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSDate *date = [ud objectForKey:@"last_did_exit_timestamp"];
+    return date;
+}
++(void)setLastDidExitTimestamp :(NSDate *)timestamp{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:timestamp forKey:@"last_did_exit_timestamp"];
+    [ud synchronize];
+}
+
 @end

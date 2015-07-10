@@ -1,0 +1,92 @@
+ [
+  {
+  "identifier":"location 1",
+  "lat":25.096956,
+  "long":77.920494,
+  "radius":5
+  },
+  {
+  "identifier":"location 2",
+  "lat":27.086102,
+  "long":77.908175,
+  "radius":5
+  },
+  {
+  "identifier":"location 3",
+  "lat":29.047020,
+  "long":77.809566,
+  "radius":10
+  },
+  {
+  "identifier":"location 5",
+  "lat":33.012330,
+  "long":77.743777,
+  "radius":10
+  },
+  {
+  "identifier":"location 4",
+  "lat":31.001152,
+  "long":77.762374,
+  "radius":10
+  },
+  {
+  "identifier":"location 6",
+  "lat":35.989798,
+  "long":77.701316,
+  "radius":10
+  },
+  {
+  "identifier":"location 8",
+  "lat":39.989263,
+  "long":77.701388,
+  "radius":5
+  },
+  {
+  "identifier":"location 7",
+  "lat":37.995219,
+  "long":77.705530,
+  "radius":5
+  },
+  {
+  "identifier":"location 10",
+  "lat":43.831631,
+  "long":77.577959,
+  "radius":5
+  },
+  {
+  "identifier":"location 9",
+  "lat":41.930151,
+  "long":77.645021,
+  "radius":5
+  },
+  {
+  "identifier":"location 12",
+  "lat":47.507969,
+  "long":73.467389,
+  "radius":5
+  },
+  {
+  "identifier":"location 13",
+  "lat":49.601633,
+  "long":77.083165,
+  "radius":5
+  },
+  {
+  "identifier":"location 11",
+  "lat":45.770375,
+  "long":77.498875,
+  "radius":10
+  },
+  {
+  "identifier":"location 15",
+  "lat":53.668850,
+  "long":77.243389,
+  "radius":10
+  },
+  {
+  "identifier":"location 14",
+  "lat":51.645284,
+  "long":77.322995,
+  "radius":10
+  }
+  ]

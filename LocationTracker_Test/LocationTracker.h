@@ -11,6 +11,12 @@
 
 @interface LocationTracker : NSObject<CLLocationManagerDelegate>
 + (LocationTracker *)sharedInstance;
+
 -(void)startMonitoringSignificantLocationChanges;
+-(void)stopMonitoringSignificantLocationChanges;
+
+-(void)startRegionMonitoring;
+-(void)stopRegionMonitoring;
+
 -(void) showLocalNotification :(NSString *)msg;
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06FAF4C891E22B77F52418CC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFEE94C60503BA6677F0AB7 /* libPods.a */; };
+		3865AC571B4FDBC400752A43 /* Regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 3865AC561B4FDBC400752A43 /* Regions.geojson */; };
 		387F29E01B4D15F100DE71B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F29DF1B4D15F100DE71B8 /* main.m */; };
 		387F29E31B4D15F100DE71B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F29E21B4D15F100DE71B8 /* AppDelegate.m */; };
 		387F29E61B4D15F100DE71B8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F29E51B4D15F100DE71B8 /* ViewController.m */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		18D705F2455F5248478F98A6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3865AC561B4FDBC400752A43 /* Regions.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Regions.geojson; sourceTree = "<group>"; };
 		387F29DA1B4D15F100DE71B8 /* LocationTracker_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationTracker_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		387F29DE1B4D15F100DE71B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		387F29DF1B4D15F100DE71B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3865AC551B4FDB7B00752A43 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3865AC561B4FDBC400752A43 /* Regions.geojson */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		387F29D11B4D15F100DE71B8 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 				38B120AF1B4EA42D00BA2198 /* Controllers */,
 				38B120A81B4E715500BA2198 /* Services */,
 				387F29DD1B4D15F100DE71B8 /* Supporting Files */,
+				3865AC551B4FDB7B00752A43 /* Resources */,
 			);
 			path = LocationTracker_Test;
 			sourceTree = "<group>";
@@ -309,6 +320,7 @@
 			files = (
 				387F2A041B4D16A900DE71B8 /* .gitignore in Resources */,
 				387F29E91B4D15F100DE71B8 /* Main.storyboard in Resources */,
+				3865AC571B4FDBC400752A43 /* Regions.geojson in Resources */,
 				387F29EE1B4D15F100DE71B8 /* LaunchScreen.xib in Resources */,
 				387F29EB1B4D15F100DE71B8 /* Images.xcassets in Resources */,
 			);
