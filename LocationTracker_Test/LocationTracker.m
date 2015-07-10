@@ -39,7 +39,7 @@ static LocationTracker *_locationTracker = nil;
 }
 -(void)startMonitoringSignificantLocationChanges {
     NSLog(@"startMonitoringSignificantLocationChanges");
-    if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+    if (![CLLocationManager significantLocationChangeMonitoringAvailable]) {
         [self showNotificationAlert:@"Your device doesn't support significant location change monitoring."];
         return;
     }
