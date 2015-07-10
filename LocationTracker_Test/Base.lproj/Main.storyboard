@@ -63,18 +63,26 @@
                                     <constraint firstAttribute="trailing" secondItem="PQA-D2-DnD" secondAttribute="trailing" constant="12" id="mNa-vK-q2B"/>
                                 </constraints>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAy-k3-T3Q">
+                                <rect key="frame" x="10" y="180" width="580" height="410"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uAy-k3-T3Q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="2xp-dT-I6g"/>
                             <constraint firstItem="s1e-zc-SxB" firstAttribute="top" secondItem="MBA-jP-jno" secondAttribute="bottom" constant="10" id="FUh-QN-XR7"/>
                             <constraint firstItem="MBA-jP-jno" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="JxR-hG-Qe0"/>
                             <constraint firstItem="MBA-jP-jno" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Kgc-70-Bo5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s1e-zc-SxB" secondAttribute="trailing" constant="-6" id="L7S-BS-v2u"/>
                             <constraint firstItem="s1e-zc-SxB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="M8R-ls-iAV"/>
+                            <constraint firstItem="uAy-k3-T3Q" firstAttribute="top" secondItem="s1e-zc-SxB" secondAttribute="bottom" constant="10" id="cvq-oz-bbk"/>
                             <constraint firstItem="MBA-jP-jno" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="16" id="fcv-cp-q8M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uAy-k3-T3Q" secondAttribute="trailing" constant="-6" id="jPE-5E-Vwn"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="uAy-k3-T3Q" secondAttribute="bottom" constant="10" id="jRA-D4-50b"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="uAy-k3-T3Q" id="dmL-i0-TvQ"/>
                         <outlet property="switchLocationTracking" destination="hzS-4f-5Nm" id="4q3-Wu-yZj"/>
                         <outlet property="switchRegionMonitoring" destination="PQA-D2-DnD" id="KSa-iO-SXa"/>
                     </connections>
