@@ -39,7 +39,7 @@ DerivedData
 
 # CocoaPods
 Pods/
-LocationTracker_Test.xcworkspace
+*.xcworkspace
 
 
 ### Swift ###
