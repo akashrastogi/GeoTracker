@@ -22,6 +22,7 @@
         }
         self.ObjectManager = [RKObjectManager sharedManager];
     }
+    
     return self;
 }
 

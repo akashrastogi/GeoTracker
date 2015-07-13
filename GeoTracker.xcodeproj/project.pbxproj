@@ -16,7 +16,6 @@
 		387F29E91B4D15F100DE71B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387F29E71B4D15F100DE71B8 /* Main.storyboard */; };
 		387F29EB1B4D15F100DE71B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 387F29EA1B4D15F100DE71B8 /* Images.xcassets */; };
 		387F29EE1B4D15F100DE71B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 387F29EC1B4D15F100DE71B8 /* LaunchScreen.xib */; };
-		387F29FA1B4D15F100DE71B8 /* LocationTracker_TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */; };
 		387F2A041B4D16A900DE71B8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 387F2A031B4D16A900DE71B8 /* .gitignore */; };
 		387F2A071B4D225600DE71B8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387F2A061B4D225600DE71B8 /* CoreLocation.framework */; };
 		38B120A61B4E6EE300BA2198 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120A51B4E6EE300BA2198 /* Constant.m */; };
@@ -25,21 +24,11 @@
 		38B120B41B4ED2EA00BA2198 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B120B31B4ED2EA00BA2198 /* Location.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		387F29F41B4D15F100DE71B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 387F29D21B4D15F100DE71B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 387F29D91B4D15F100DE71B8;
-			remoteInfo = LocationTracker_Test;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		18D705F2455F5248478F98A6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3865AC561B4FDBC400752A43 /* Regions.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Regions.geojson; sourceTree = "<group>"; };
 		3865AC581B503C9600752A43 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		387F29DA1B4D15F100DE71B8 /* LocationTracker_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationTracker_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		387F29DA1B4D15F100DE71B8 /* GeoTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		387F29DE1B4D15F100DE71B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		387F29DF1B4D15F100DE71B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		387F29E11B4D15F100DE71B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -49,9 +38,6 @@
 		387F29E81B4D15F100DE71B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		387F29EA1B4D15F100DE71B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		387F29ED1B4D15F100DE71B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		387F29F31B4D15F100DE71B8 /* LocationTracker_TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationTracker_TestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		387F29F81B4D15F100DE71B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationTracker_TestTests.m; sourceTree = "<group>"; };
 		387F2A031B4D16A900DE71B8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		387F2A061B4D225600DE71B8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		38B120A41B4E6EE300BA2198 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -78,13 +64,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		387F29F01B4D15F100DE71B8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,9 +78,8 @@
 		387F29D11B4D15F100DE71B8 = {
 			isa = PBXGroup;
 			children = (
-				387F29DC1B4D15F100DE71B8 /* LocationTracker_Test */,
+				387F29DC1B4D15F100DE71B8 /* GeoTracker */,
 				387F2A031B4D16A900DE71B8 /* .gitignore */,
-				387F29F61B4D15F100DE71B8 /* LocationTracker_TestTests */,
 				387F2A051B4D223500DE71B8 /* Frameworks */,
 				387F29DB1B4D15F100DE71B8 /* Products */,
 				D822FA6A8D396245AB74DEED /* Pods */,
@@ -111,13 +89,12 @@
 		387F29DB1B4D15F100DE71B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				387F29DA1B4D15F100DE71B8 /* LocationTracker_Test.app */,
-				387F29F31B4D15F100DE71B8 /* LocationTracker_TestTests.xctest */,
+				387F29DA1B4D15F100DE71B8 /* GeoTracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		387F29DC1B4D15F100DE71B8 /* LocationTracker_Test */ = {
+		387F29DC1B4D15F100DE71B8 /* GeoTracker */ = {
 			isa = PBXGroup;
 			children = (
 				38B120B11B4EA48D00BA2198 /* AppDelegate */,
@@ -128,7 +105,7 @@
 				387F29DD1B4D15F100DE71B8 /* Supporting Files */,
 				3865AC551B4FDB7B00752A43 /* Resources */,
 			);
-			path = LocationTracker_Test;
+			path = GeoTracker;
 			sourceTree = "<group>";
 		};
 		387F29DD1B4D15F100DE71B8 /* Supporting Files */ = {
@@ -137,23 +114,6 @@
 				387F29DE1B4D15F100DE71B8 /* Info.plist */,
 				387F29DF1B4D15F100DE71B8 /* main.m */,
 				38B120A71B4E6FCF00BA2198 /* PrefixHeader.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		387F29F61B4D15F100DE71B8 /* LocationTracker_TestTests */ = {
-			isa = PBXGroup;
-			children = (
-				387F29F91B4D15F100DE71B8 /* LocationTracker_TestTests.m */,
-				387F29F71B4D15F100DE71B8 /* Supporting Files */,
-			);
-			path = LocationTracker_TestTests;
-			sourceTree = "<group>";
-		};
-		387F29F71B4D15F100DE71B8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				387F29F81B4D15F100DE71B8 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -238,9 +198,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		387F29D91B4D15F100DE71B8 /* LocationTracker_Test */ = {
+		387F29D91B4D15F100DE71B8 /* GeoTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 387F29FD1B4D15F100DE71B8 /* Build configuration list for PBXNativeTarget "LocationTracker_Test" */;
+			buildConfigurationList = 387F29FD1B4D15F100DE71B8 /* Build configuration list for PBXNativeTarget "GeoTracker" */;
 			buildPhases = (
 				F8C6579623727DD3E6EC0403 /* Check Pods Manifest.lock */,
 				387F29D61B4D15F100DE71B8 /* Sources */,
@@ -252,28 +212,10 @@
 			);
 			dependencies = (
 			);
-			name = LocationTracker_Test;
+			name = GeoTracker;
 			productName = LocationTracker_Test;
-			productReference = 387F29DA1B4D15F100DE71B8 /* LocationTracker_Test.app */;
+			productReference = 387F29DA1B4D15F100DE71B8 /* GeoTracker.app */;
 			productType = "com.apple.product-type.application";
-		};
-		387F29F21B4D15F100DE71B8 /* LocationTracker_TestTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 387F2A001B4D15F100DE71B8 /* Build configuration list for PBXNativeTarget "LocationTracker_TestTests" */;
-			buildPhases = (
-				387F29EF1B4D15F100DE71B8 /* Sources */,
-				387F29F01B4D15F100DE71B8 /* Frameworks */,
-				387F29F11B4D15F100DE71B8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				387F29F51B4D15F100DE71B8 /* PBXTargetDependency */,
-			);
-			name = LocationTracker_TestTests;
-			productName = LocationTracker_TestTests;
-			productReference = 387F29F31B4D15F100DE71B8 /* LocationTracker_TestTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -292,13 +234,9 @@
 							};
 						};
 					};
-					387F29F21B4D15F100DE71B8 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 387F29D91B4D15F100DE71B8;
-					};
 				};
 			};
-			buildConfigurationList = 387F29D51B4D15F100DE71B8 /* Build configuration list for PBXProject "LocationTracker_Test" */;
+			buildConfigurationList = 387F29D51B4D15F100DE71B8 /* Build configuration list for PBXProject "GeoTracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -311,8 +249,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				387F29D91B4D15F100DE71B8 /* LocationTracker_Test */,
-				387F29F21B4D15F100DE71B8 /* LocationTracker_TestTests */,
+				387F29D91B4D15F100DE71B8 /* GeoTracker */,
 			);
 		};
 /* End PBXProject section */
@@ -327,13 +264,6 @@
 				3865AC571B4FDBC400752A43 /* Regions.geojson in Resources */,
 				387F29EE1B4D15F100DE71B8 /* LaunchScreen.xib in Resources */,
 				387F29EB1B4D15F100DE71B8 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		387F29F11B4D15F100DE71B8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,23 +317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		387F29EF1B4D15F100DE71B8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				387F29FA1B4D15F100DE71B8 /* LocationTracker_TestTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		387F29F51B4D15F100DE71B8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 387F29D91B4D15F100DE71B8 /* LocationTracker_Test */;
-			targetProxy = 387F29F41B4D15F100DE71B8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		387F29E71B4D15F100DE71B8 /* Main.storyboard */ = {
@@ -507,10 +421,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
-				INFOPLIST_FILE = LocationTracker_Test/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GeoTracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoTracker;
 			};
 			name = Debug;
 		};
@@ -520,51 +434,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
-				INFOPLIST_FILE = LocationTracker_Test/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GeoTracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		387F2A011B4D15F100DE71B8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LocationTracker_TestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocationTracker_Test.app/LocationTracker_Test";
-			};
-			name = Debug;
-		};
-		387F2A021B4D15F100DE71B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LocationTracker_TestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocationTracker_Test.app/LocationTracker_Test";
+				PRODUCT_NAME = GeoTracker;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		387F29D51B4D15F100DE71B8 /* Build configuration list for PBXProject "LocationTracker_Test" */ = {
+		387F29D51B4D15F100DE71B8 /* Build configuration list for PBXProject "GeoTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				387F29FB1B4D15F100DE71B8 /* Debug */,
@@ -573,20 +453,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		387F29FD1B4D15F100DE71B8 /* Build configuration list for PBXNativeTarget "LocationTracker_Test" */ = {
+		387F29FD1B4D15F100DE71B8 /* Build configuration list for PBXNativeTarget "GeoTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				387F29FE1B4D15F100DE71B8 /* Debug */,
 				387F29FF1B4D15F100DE71B8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		387F2A001B4D15F100DE71B8 /* Build configuration list for PBXNativeTarget "LocationTracker_TestTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				387F2A011B4D15F100DE71B8 /* Debug */,
-				387F2A021B4D15F100DE71B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
