@@ -112,27 +112,28 @@ static LocationTracker *_locationTracker = nil;
         if (distanceCovered <= 0) return;
     }
     
-    NSMutableArray *arr = [NSMutableArray new];
+    // Calculate time difference
+    CLLocationSpeed averageSpeed = (lastReceivedLocation.speed + newLocation.speed)/2;
+    NSTimeInterval timeDifference = distanceCovered / averageSpeed;
     float batteryLevel = [[UIDevice currentDevice] batteryLevel];
     NSString *deviceOS = [NSString stringWithFormat:@"%@ %@", [[UIDevice currentDevice]systemName], [[UIDevice currentDevice] systemVersion]];
-    for (CLLocation *loc in locations) {
-        NSDictionary *dict = @{
-                               @"latitude": [NSNumber numberWithFloat:loc.coordinate.latitude],
-                               @"longitude": [NSNumber numberWithLong:loc.coordinate.longitude],
-                               @"speed": [NSNumber numberWithDouble:[loc speed]],
-                               @"course": [NSNumber numberWithDouble:[loc course]],
-                               @"horizontal_accuracy": [NSNumber numberWithDouble:loc.horizontalAccuracy],
-                               @"vertical_accuracy": [NSNumber numberWithDouble:loc.verticalAccuracy],
-                               @"battery_level": [NSNumber numberWithFloat:batteryLevel],
-                               @"device": deviceOS
-                               };
-        [arr addObject:dict];
-    }
+    
+    NSDictionary *dictLocations = @{
+                                    @"latitude": [NSNumber numberWithFloat:newLocation.coordinate.latitude],
+                                    @"longitude": [NSNumber numberWithLong:newLocation.coordinate.longitude],
+                                    @"speed": [NSNumber numberWithDouble:[newLocation speed]],
+                                    @"course": [NSNumber numberWithDouble:[newLocation course]],
+                                    @"horizontal_accuracy": [NSNumber numberWithDouble:newLocation.horizontalAccuracy],
+                                    @"vertical_accuracy": [NSNumber numberWithDouble:newLocation.verticalAccuracy],
+                                    @"battery_level": [NSNumber numberWithFloat:batteryLevel],
+                                    @"device": deviceOS
+                                    };
     
     NSDictionary *param = @{
                             @"type": @"location_update",
                             @"distance_in_meters": [NSNumber numberWithDouble:distanceCovered],
-                            @"locations": arr
+                            @"time_difference": [NSNumber numberWithDouble:timeDifference],
+                            @"locations": dictLocations
                             };
     WebServiceManager *wsManager = [[WebServiceManager alloc]init];
     [wsManager postLocation:param withCompletionHandler:^(id response, NSError *err) {
